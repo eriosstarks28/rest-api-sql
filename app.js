@@ -6,6 +6,9 @@ const express = require("express");
 const morgan = require("morgan");
 const api = require("./routes/api");
 
+
+
+
 // variable to enable global error logging
 const enableGlobalErrorLogging =
   process.env.ENABLE_GLOBAL_ERROR_LOGGING === "true";
@@ -19,12 +22,9 @@ app.use(express.json());
 // setup morgan which gives us http request logging
 app.use(morgan("dev"));
 
-
-
-
 // TODO setup your api routes here
 
-app.use('/api', api)
+app.use("/api", api);
 
 // setup a friendly greeting for the root route
 app.get("/", (req, res) => {
@@ -51,8 +51,6 @@ app.use((err, req, res, next) => {
     error: {},
   });
 });
-
-
 
 // set our port
 app.set("port", process.env.PORT || 5000);
